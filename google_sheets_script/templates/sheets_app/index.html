@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+  <div class="row col-12">
+    <div class="row col-1">
+    </div>
+    <div class="col-6">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>№</th>
+            <th>заказ №</th>
+            <th>стоимость,$</th>
+            <th>стоимость,руб</th>
+            <th>срок поставки</th>
+          </tr>
+          {% for orderline in orderlines %}
+          <tr>
+            <td>{{ orderline.number }}</td>
+            <td>{{ orderline.order_number }}</td>
+            <td>{{ orderline.price_usd }}</td>
+            <td>{{ orderline.price_rub }}</td>
+            <td>{{ orderline.shipping_date|date:"j.m.Y" }}</td>
+          </tr>
+          {% endfor %} 
+        </tbody> 
+      </table>
+    <div class="row col-4">
+    </div>
+    <div class="row col-1">
+    </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
