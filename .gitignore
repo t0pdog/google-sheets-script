@@ -131,4 +131,4 @@ dmypy.json
 # .idea
 .idea
 
-/google_sheets_script/sheets_app/management/commands/gspread/service_account.json
+google_sheets_script/sheets_app/management/commands/gspread/service_account.json
