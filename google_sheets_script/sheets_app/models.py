@@ -4,7 +4,7 @@ from django.db import models
 class Orders(models.Model):
     """
     Модель для добавления в базу данных
-    значений из Пщщпду таблицы:
+    значений из Google таблицы:
     №, № заказа, стоимость заказа в $ и в Руб, срок поставки.
     """
     number = models.PositiveSmallIntegerField(
