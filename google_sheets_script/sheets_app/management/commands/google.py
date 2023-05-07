@@ -30,13 +30,13 @@ class Command(BaseCommand):
 
             # запускаем скрипт в цикл проверки изменений каждые 60 секунд
             while True:
-                sheet_update = client.open("Kanalservice test").lastUpdateTime
+                sheet_update = client.open("Google sheet test").lastUpdateTime
 
                 if sheet_update != last_sheet_update:
                     last_sheet_update = sheet_update
 
                     # Получаем первую страницу Гугл таблицы и затем список заказов
-                    sheet = client.open("Kanalservice test").sheet1
+                    sheet = client.open("Google sheet test").sheet1
                     list_ord = sheet.get_all_values()[1:]
 
                     for i in list_ord:
@@ -83,7 +83,7 @@ class Command(BaseCommand):
                         for i in difference:
                             Orders.objects.filter(order_number=i).delete()
 
-                print("прошел цикл")
+                print("Iteration passed")
                 counter +=1
                 # счетчик обнуляется каждый час
                 if counter > 60:
@@ -92,10 +92,10 @@ class Command(BaseCommand):
                     DOLL_TO_RUB_RATE = get_currency_rate()
 
                 print(counter)
-                # ждем 60 секунд
+                # waiting 60 seconds
                 time.sleep(60)
 
-                print("новый цикл")
+                print("New iteration")
 
         except requests.exceptions.RequestException as e:
             print("Error: {}".format(e))
@@ -103,9 +103,10 @@ class Command(BaseCommand):
 
 def get_currency_rate(char_code_currency="USD"):
     """
-    Получаем курс доллара в формате XML с сайта ЦБ РФ
-    https://www.cbr.ru/scripts/XML_daily.asp
-    с использованием XPath выражения и ElementTree.
+    Get the dollar exchange rate in XML format from the website of the 
+    Central Bank of the Russian Federation
+     https://www.cbr.ru/scripts/XML_daily.asp
+    using XPath expression and ElementTree.
     """
     return float(
         ET.fromstring(requests.get('https://www.cbr.ru/scripts/XML_daily.asp').text)

@@ -4,7 +4,7 @@ from .models import Orders
 
 
 def index(request):
-    """Вью-функция для обработки главной страницы сайта"""
+    """View function for processing the main page of the site"""
     orders = Orders.objects.all()
 
     context = {
