@@ -2,11 +2,11 @@
 Test table: https://docs.google.com/spreadsheets/d/1NFIfGUrXHXkd-e0gbtWTLO1srIz4_bsIWg52NZmcFUE/edit#gid=0
 
 ## Description
-The script receives data from a Google Sheets document using the Google API.
-The data is added to the database in the same data type as in the source file, with the additional column “Price, RUB.”.
-I am using a PostgreSQL database in the project. Launching the application via Docker Compose.
-The exchange rate of USD/RUB is taken at the Central Bank of the Russian Federation (https://www.cbr.ru/development/SXML/).
-The script runs constantly to update the data online.
+- The script receives data from a Google Sheets document using the Google API.
+- The data is added to the database in the same data type as in the source file, with the additional column “Price, RUB.”.
+- I am using a PostgreSQL database in the project. Launching the application via Docker Compose.
+- The exchange rate of USD/RUB is taken at the Central Bank of the Russian Federation website (https://www.cbr.ru/development/SXML/).
+- The script runs constantly to update the data online.
 
 ## How it works
 The script is located in the application folder sheets_app\management\commands. Its operation is described in the google.py file, it is launched by the command: python manage.py google.
